@@ -16,7 +16,6 @@ function readLine() {
     return inputString[currentLine++];
 }
 
-// Complete the isValid function below.
 function isValid(s) {
   const freq = {}
   for (let index = 0; index < s.length; index++) {
@@ -36,6 +35,10 @@ function isValid(s) {
       continue
     }
     else if (charFreq === commonFreq + 1) {
+      if (oneOff) return 'NO'
+      oneOff = true
+    }
+    else if (charFreq === 1) {
       if (oneOff) return 'NO'
       oneOff = true
     }
