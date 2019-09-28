@@ -3,14 +3,12 @@
 const challengeIo = require('../utils/challenge-io')
 
 function minimumAbsoluteDifference(arr) {
-  const uniq = Array.from(new Set(arr))
-  const arraySize = uniq.length
-  let min = Number.POSITIVE_INFINITY
-  for (let i = 0; i < arraySize-1; i++) {
-    for (let j = i+1; j < arraySize; j++) {
-      const diff = Math.abs(uniq[i] - uniq[j])
-      min = Math.min(min, diff)
-    }
+  arr.sort()
+  let min = Math.abs(arr[0] - arr[1])
+  const arraySize = arr.length
+  for (let i = 1; i < arraySize-1; i++) {
+    const diff = Math.abs(arr[i] - arr[i+1])
+    min = Math.min(min, diff)
   }
   return min
 }
