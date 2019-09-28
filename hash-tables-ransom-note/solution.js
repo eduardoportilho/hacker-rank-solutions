@@ -3,12 +3,26 @@
 const challengeIo = require('../utils/challenge-io')
 
 function checkMagazine(magazine, note) {
-  const magazineSet = new Set(magazine)
-  return note.every(word => magazineSet.delete(word)) ? 'Yes' : 'No'
+  function wordCounter(arr) {
+    const map = arr.reduce((acc, val) => {
+      acc[val] = (acc[val] || 0) + 1
+      return acc
+    }, {})
+    return {
+      pick: (word) => {
+        if (!map[word]) return false
+        map[word] = map[word] - 1
+        return true
+      }
+    }
+  }
+
+  const magazineSet = wordCounter(magazine)
+  return note.every(word => magazineSet.pick(word)) ? 'Yes' : 'No'
 }
 
 challengeIo.solve(
-  './hash-tables-ransom-note/input.txt',
+  './hash-tables-ransom-note/input13.txt',
   (challenge) => {
     const [magazineCount, noteCount] = challenge.readIntArrayLine()
     const magazine = challenge.readStringArrayLine()
