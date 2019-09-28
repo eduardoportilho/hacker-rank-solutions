@@ -8,7 +8,7 @@
       "type": "node",
       "request": "launch",
       "name": "Launch Program",
-      "program": "${workspaceFolder}/hash-tables-ransom-note/solution.js",
+      "program": "${workspaceFolder}/balanced-brackets/solution.js",
       "args": []
     }
   ]
