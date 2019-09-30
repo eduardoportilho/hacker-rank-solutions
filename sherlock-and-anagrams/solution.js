@@ -6,31 +6,65 @@ function sherlockAndAnagrams(s) {
   let size = 1
   let aCount = 0
   while (size < s.length) {
-    aCount += countAnagramsOfSize(s, size)
+    const count = countAnagramsOfSize(s, size)
+    aCount += count
     size++
   }
   return aCount
 }
 
 function countAnagramsOfSize(s, size) {
-  let aCount = 0
-  for (let i = 0; i < s.length - size; i++) {
-    const s1 = s.substring(i, i+size)
-    for (let j = i+1; j <= s.length - size; j++) {
-      const s2 = s.substring(j, j+size)
-      if (isAnagram(s1, s2)) {
-        aCount++
-      }
-    }
+  const substrings = []
+  for (let i = 0; i <= s.length - size; i++) {
+    const sorted = s.substring(i, i+size).split('').sort().join('')
+    substrings.push(sorted)
   }
-  return aCount
+  const repetitionCount = countRepetitions(substrings)
+  return repetitionCount.reduce((acc, val) => {
+    return acc + combinations2(val)
+  }, 0)
 }
 
-function isAnagram(s1, s2) {
-  const ss1 = s1.split('').sort().join('')
-  const ss2 = s2.split('').sort().join('')
-  return ss1 === ss2
+function countRepetitions(arr) {
+  arr.sort()
+  if (arr.length < 2) return []
+  let i = 1, 
+    currentVal = arr[0],
+    currentValCount = 1,
+    repetitionCount = []
+
+  while (i < arr.length) {
+    if (arr[i] === currentVal) {
+      currentValCount++
+    } else {
+      if (currentValCount > 1) {
+        repetitionCount.push(currentValCount)
+        currentValCount = 1
+      }
+      currentVal = arr[i]
+    }
+    i++
+  }
+  if (currentValCount > 1) {
+    repetitionCount.push(currentValCount)
+  }
+  return repetitionCount
 }
+
+function combinations2(n) {
+  if (n === 1) return 1
+  return factorial(n) / (2*factorial(n-2))
+}
+
+const f = [0, 1, 2, 6, 24, 120, 720, 5040, 40320, 362880, 3628800, 39916800, 479001600, 6227020800]
+// const f = []
+function factorial (n) {
+  if (n === 0 || n === 1)
+    return 1;
+  if (f[n] > 0)
+    return f[n];
+  return f[n] = factorial(n-1) * n;
+} 
 
 
 challengeIo.solve(
