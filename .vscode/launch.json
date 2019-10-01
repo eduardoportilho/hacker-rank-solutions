@@ -8,10 +8,8 @@
       "type": "node",
       "request": "launch",
       "name": "Launch Program",
-      "program": "${workspaceFolder}/Making_Anagrams/solution.js",
-      "args": [
-        "Making_Anagrams/input.txt"
-      ]
+      "program": "${workspaceFolder}/minimum-absolute-difference-in-an-array/solution.js",
+      "args": []
     }
   ]
 }
