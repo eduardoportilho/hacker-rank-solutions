@@ -13,6 +13,9 @@ const buildChallenge = (inputPath, data) => {
   const readIntArrayLine = () => {
     return readLine().split(' ').map(str => parseInt(str, 10))
   }
+  const readStringArrayLine = () => {
+    return readLine().split(' ')
+  }
   const writeSolution = (output) => {
     console.log(`>>> Took ${Date.now() - time} ms`)
     const outputPath = inputPath.replace(/(\.\w+$)/gi, '.out$1')
@@ -25,6 +28,7 @@ const buildChallenge = (inputPath, data) => {
     readIntLine,
     readIntArrayLine,
     writeSolution,
+    readStringArrayLine,
   }
 }
 

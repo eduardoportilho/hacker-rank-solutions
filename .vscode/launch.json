@@ -8,7 +8,7 @@
       "type": "node",
       "request": "launch",
       "name": "Launch Program",
-      "program": "${workspaceFolder}/minimum-absolute-difference-in-an-array/solution.js",
+      "program": "${workspaceFolder}/hash-tables-ransom-note/solution.js",
       "args": []
     }
   ]
