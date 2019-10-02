@@ -8,7 +8,7 @@
       "type": "node",
       "request": "launch",
       "name": "Launch Program",
-      "program": "${workspaceFolder}/balanced-brackets/solution.js",
+      "program": "${workspaceFolder}/two-strings/solution.js",
       "args": []
     }
   ]
