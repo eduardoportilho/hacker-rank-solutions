@@ -8,7 +8,7 @@
       "type": "node",
       "request": "launch",
       "name": "Launch Program",
-      "program": "${workspaceFolder}/two-strings/solution.js",
+      "program": "${workspaceFolder}/sherlock-and-anagrams/solution.js",
       "args": []
     }
   ]
